@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #e9ecf4;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+}
+
+.contenedor {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
+    "nav nav nav"
+    "contenido contenido sidebar"
+    "bloque1 bloque1 bloque2 "
+    "footer footer footer";
+}
+
+.contenido {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+nav {
+  background: #ec9006;
+  color: #fff;
+  grid-area: nav;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 30px;
+}
+
+.contenido {
+  grid-area: contenido;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: #67db9e;
+  display: flex;
+  flex-direction: column; /* Para que se ordenen de arriba hacia abajo */
+  justify-content: top; /* Centra todos los elementos juntos verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente */
+  min-height: 200px;
+  padding: 20px;
+  border-radius: 12px; /* Opcional, para esquinas redondeadas */
+}
+
+.sidebar p,
+h3 {
+  margin: 20px 0;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.bloque {
+  color: #ffff;
+  text-align: left;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.bloque p {
+  text-align: left;
+}
+
+#bloque1 {
+  grid-area: bloque1;
+  background: #55a8fd;
+}
+
+#bloque2 {
+  grid-area: bloque2;
+  background: #1f6ab6;
+}
+
+footer {
+  background: #4a4d50;
+  color: #fff;
+  grid-area: footer;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 30px;
+}
+
+/* Ocultar el botón de hamburguesa en pantallas grandes */
+.button-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor {
+    grid-template-areas:
+      "nav nav nav"
+      "contenido contenido contenido"
+      "sidebar sidebar sidebar"
+      "bloque1 bloque1 bloque1"
+      "bloque2 bloque2 bloque2"
+      "footer footer footer";
+  }
+
+  .button-toggle {
+    display: block; /* Mostrar botón hamburguesa */
+  }
+
+  .menu {
+    display: none; /* Ocultar el menú inicialmente */
+    flex-direction: column;
+    background: #ec9006;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .menu a {
+    display: block;
+    padding: 10px;
+  }
+
+  /* Cuando el menú está abierto */
+  .menu.open {
+    display: flex;
+  }
+}
